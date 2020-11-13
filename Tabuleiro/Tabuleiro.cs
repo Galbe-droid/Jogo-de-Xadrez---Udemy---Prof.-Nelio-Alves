@@ -29,8 +29,18 @@ namespace tabuleiro
             return _pecas[pos.Linha, pos.Coluna];
         }
 
+        public bool ExistePeca(Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return peca(pos) != null;
+        }
+
         public void ColocarPeca(Peca p, Posicao pos)
         {
+            if(ExistePeca(pos))
+            {
+                throw new TabuleiroException("Ha uma peça nessa posição.");
+            }
             _pecas[pos.Linha, pos.Coluna] = p;
             p.posicao = pos;
         }

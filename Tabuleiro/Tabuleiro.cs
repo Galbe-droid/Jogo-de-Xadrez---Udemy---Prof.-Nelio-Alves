@@ -17,6 +17,7 @@ namespace tabuleiro
             this.Linhas = linhas;
             this.Colunas = colunas;
             _pecas = new Peca[linhas, colunas];
+
         }
 
         public Peca peca(int linha, int coluna)
@@ -43,6 +44,21 @@ namespace tabuleiro
             }
             _pecas[pos.Linha, pos.Coluna] = p;
             p.posicao = pos;
+        }
+
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if(peca(pos) == null)
+            {
+                return null;
+            }
+            else
+            {
+                Peca aux = peca(pos);
+                aux.posicao = null;
+                _pecas[pos.Linha, pos.Coluna] = null;
+                return aux;
+            }
         }
 
         public bool PosicaoValida(Posicao pos)

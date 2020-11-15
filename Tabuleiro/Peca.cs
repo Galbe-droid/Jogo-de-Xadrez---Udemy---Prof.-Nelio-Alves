@@ -16,5 +16,10 @@ namespace tabuleiro
             this.cor = cores;
             this.Movimentos = 0;
         }
+
+        public void IncrementarMovimento()
+        {
+            Movimentos++;
+        }
     }
 }
